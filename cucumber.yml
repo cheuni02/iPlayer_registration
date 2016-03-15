@@ -1,0 +1,8 @@
+# config/cucumber.yml
+##YAML Template
+---
+
+
+wip: --tags @WIP --expand --format pretty
+iplayer_registration: --tags @register --expand --format pretty
+iplayer_add_remove: --tags @add_remove_programme --expand --format pretty

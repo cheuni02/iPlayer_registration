@@ -1,0 +1,24 @@
+require 'cucumber'
+require 'cucumber/rake/task'
+require 'fileutils'
+
+namespace :bbc_site do
+  desc "regression on BBC News"
+  task :bbc_news, [:host] do |t, args|
+    ENV['BBC_HOST'] = args[:host]
+    Cucumber::Rake::Task.new(:run) do |task|
+      task.profile = "wip"
+    end
+    Rake::Task[:run].invoke()
+  end
+
+  desc "test the BBC Registration"
+  task :iplayer, [:host,:tag] do |t, args|
+    ENV['BBC_HOST'] = args[:host]
+    ENV['TAG'] = args[:tag]
+    Cucumber::Rake::Task.new(:run) do |task|
+      task.profile = "iplayer_#{args[:tag]}"
+    end
+    Rake::Task[:run].invoke()
+  end
+end
